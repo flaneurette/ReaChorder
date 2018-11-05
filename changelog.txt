@@ -1,0 +1,23 @@
+TODO:
+=====
+* Guitar Chords Tab integration
+* Better control over the 1st and 2nd chord inversions (Less random, less jumping)
+* Chord left-hand patterns (ballad etc)
+* (even) better melody generation: Markov chain prediction.
+* Melody phrasing option. 
+* Syllable count option.
+
+
+12-12-2017
+==========
++ New tab: Guitar
++ Import error handling, useful for working with PyScripter.
+- Code cleanup
+
+
+30-11-2017
+==========
++ Layout adjustment
++ Draw MIDI Button is now visible on all tabs
++ Somewhat better melody generation, not complete yet.
+- Code cleanup.

@@ -1,17 +1,18 @@
 try:
+    import sys
+except ImportError:
+    RPR_ShowConsoleMsg('Could not import SYS.\n')
+    pass
+try:
     from reaper_python import *
 except ImportError:
     RPR_ShowConsoleMsg('Could not import Reaper Python.\n')
     pass
 try:
+    sys.path.append(RPR_GetResourcePath() + '/Scripts')
     from sws_python import *
 except ImportError:
     RPR_ShowConsoleMsg('Could not import SWS Python.\n')
-    pass
-try:
-    import sys
-except ImportError:
-    RPR_ShowConsoleMsg('Could not import SYS.\n')
     pass
 try:
     import platform

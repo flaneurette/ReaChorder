@@ -1,47 +1,58 @@
 try:
     from reaper_python import *
 except ImportError:
+    RPR_ShowConsoleMsg('Could not import Reaper Python.\n')
     pass
 try:
     from sws_python import *
 except ImportError:
+    RPR_ShowConsoleMsg('Could not import SWS Python.\n')
     pass
 try:
     import sys
 except ImportError:
+    RPR_ShowConsoleMsg('Could not import SYS.\n')
     pass
 try:
     import platform
 except ImportError:
+    RPR_ShowConsoleMsg('Could not import platform.\n')
     pass
 try:
     import os
 except ImportError:
+    RPR_ShowConsoleMsg('Could not import OS.\n')
     pass
 try:
     import tkinter
     from tkinter import ttk, Y, BOTH, RAISED
 except ImportError:
+    RPR_ShowConsoleMsg('Could not import tkinter.\n')
     pass
 try:
     from rs_statemanager import RSStateManager
 except ImportError:
+    RPR_ShowConsoleMsg('Could not import rs_statemanager.\n')
     pass
 try:
     from contextlib import contextmanager
 except ImportError:
+    RPR_ShowConsoleMsg('Could not import contextlib.\n')
     pass
 try:
     from reaChord_data import RC, msg
 except ImportError:
+    RPR_ShowConsoleMsg('Could not import reaChord_data.\n')
     pass
 try:
     from rs_midi import RSMidi
 except ImportError:
+    RPR_ShowConsoleMsg('Could not import rs_midi.\n')
     pass
 try:
     from reaper_track import Track, Item
 except ImportError:
+    RPR_ShowConsoleMsg('Could not import reaper_track.\n')
     pass
 
 sys.argv=["Main"]
@@ -53,6 +64,7 @@ try:
     from drum_section import DrumSection
     from melody_section import MelodySection
 except ImportError:
+    RPR_ShowConsoleMsg('Could not import sections.\n')
     pass
 
 class ReaChord(RSStateManager):
@@ -183,4 +195,3 @@ if __name__ == '__main__':
     root = tkinter.Tk()
     ReaChord(root)
     root.mainloop()
-

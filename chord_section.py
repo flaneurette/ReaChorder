@@ -223,8 +223,6 @@ class ChordSection(RSStateManager):
             rowspan = 1,
             sticky = "w"
         )
-        
-        
         self.scaleTxt1.grid(
             in_    = self.parent,
             column = 2,

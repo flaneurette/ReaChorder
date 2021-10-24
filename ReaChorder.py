@@ -15,6 +15,16 @@ except ImportError:
     RPR_ShowConsoleMsg('Could not import SWS Python.\n')
     pass
 try:
+    apitest = RPR_APIExists("CF_GetSWSVersion")
+    if apitest == 0:
+        RPR_ShowConsoleMsg('Your SWS version does not allow versioning. Please visit: https://www.sws-extension.org/ and update SWS.')
+    else:		
+        (sws_version,build) = CF_GetSWSVersion('',5)
+        if sws_version != '2.12':
+            RPR_ShowConsoleMsg('Your SWS version (< 2.12) is not supported. Please visit: https://www.sws-extension.org/ and update SWS.')
+except:
+    RPR_ShowConsoleMsg('Your SWS version is (probably) not supported. Please visit: https://www.sws-extension.org/ and update SWS.')
+try:
     import platform
 except ImportError:
     RPR_ShowConsoleMsg('Could not import platform.\n')
@@ -92,7 +102,7 @@ class ReaChord(RSStateManager):
             frame_width = 610 # Win7+
 
         self.mainFrame = ttk.Frame(self.root, width=frame_width, borderwidth=0, height=frame_height)
-        self.mainFrame.pack(fill=BOTH, expand=1, padx=10, pady=10)
+        self.mainFrame.pack(fill=BOTH, expand=1, padx=10, pady=5)
 
         self.mainFrame1 = ttk.Frame(self.root, width=frame_width, borderwidth=0, height=30)
         self.mainFrame1.pack(fill=BOTH, expand=Y, padx=10, pady=0)

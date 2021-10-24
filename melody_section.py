@@ -31,7 +31,7 @@ class MelodySection(RSStateManager):
     def __init__(self, parent, rc):
 
         self.settings = {
-            "draw": 0, "channel": 2, "velocity": 96, "highlight": 1, "extranoteprobability" : 50
+            "draw": 0, "channel": 2, "velocity": 96, "highlight": 1, "harmony": 1, "extranoteprobability" : 50
         }
         self.msg("Chords __init__  Enter")
         self.stateManager_Start("MelodySection", self.settings)
@@ -45,7 +45,7 @@ class MelodySection(RSStateManager):
         if not(self.drawOrNot.get()): return
         currentPos = 0
 
-        # melodyType = self.MelodyTypeSel.current()
+        melodyType = self.MelodyTypeSel.current()
         for i, sect in enumerate(song["Structure"]):
             chords = song[str(sect)]
             chordLength = sectionLength / len(chords)
@@ -56,7 +56,8 @@ class MelodySection(RSStateManager):
 
     def drawMelody(self,midiTake, chord, currentPos, chordLength):
         self.msg('drawMelody - Enter')
-        harmony1 = False # if True, add "harmony1"
+        harmony1 = self.harmony.get()
+        melodyType = self.MelodyTypeSel.current()
         harmony2 = False # if True, add "harmony2"
         randNote = randint(1, 3)
         randPos = [0,480,960]
@@ -93,10 +94,25 @@ class MelodySection(RSStateManager):
                     randExtraNote = False
 
                 # draw melody
-                RSMidi.addNote(midiTake, int(channel), int(velocity), int(currentPos + rpos), int(self.rc.ChordDict[chord][firstNotePosInChord]), int(self.rc.quartNoteLength * rlen), selectNote)
-                currentPos += rpos + (self.rc.quartNoteLength * rlen)
-                '''
-                if harmony1:
+
+                # melodyType = int(self.MelodyTypeSel.current())
+                melodyType = 0
+				# Circle of fifths
+                if melodyType == 0:
+                    RSMidi.addNote(midiTake, int(channel), int(velocity), int(currentPos + rpos), int(self.rc.ChordDict[chord][firstNotePosInChord]), int(self.rc.quartNoteLength * rlen), selectNote)
+                    currentPos += rpos + (self.rc.quartNoteLength * rlen)
+				# Markov
+                if melodyType == 1:
+                    chain = self.rc.ChordDictMnamed[chord][randint(1,11)];
+                    RSMidi.addNote(midiTake, int(channel), int(velocity), int(currentPos + rpos), int(self.rc.ChordDict[chord][firstNotePosInChord]), int(self.rc.quartNoteLength * rlen), selectNote)
+                    currentPos += rpos + (self.rc.quartNoteLength * rlen)
+                # Primes				
+                if melodyType == 2:
+                    primenote = self.rc.PrimeChain[0][randint(1,11)]
+                    RSMidi.addNote(midiTake, int(channel), int(velocity), int(currentPos), int(self.rc.ChordDict[chord][firstNotePosInChord]), int(self.rc.quartNoteLength * rlen), selectNote)
+                    currentPos += rpos + (self.rc.quartNoteLength * rlen)				
+				
+                if harmony1 == 1:
                     # "humanize"
                     harmony1Pos = rpos + randint(-60, 60)
                     if harmony1Pos < 0:
@@ -105,7 +121,8 @@ class MelodySection(RSStateManager):
                     # draw "harmony"1
                     RSMidi.addNote(midiTake, int(channel), int(velocity1), int(currentPos + harmony1Pos), int(self.rc.ChordDict[chord][secondNotePosInChord]),\
                                         int(self.rc.quartNoteLength * rlen), selectNote)
-                if harmony2:
+                
+                if harmony2 == 1:
                     # "humanize"
                     harmony2Pos = rpos + randint(-60, 60)
                     if harmony2Pos < 0:
@@ -114,7 +131,7 @@ class MelodySection(RSStateManager):
                     # draw "harmony" 2
                     RSMidi.addNote(midiTake, int(channel), int(velocity2), int(currentPos + harmony2Pos), int(self.rc.ChordDict[chord][thirdNotePosInChord]),\
                                         int(self.rc.quartNoteLength * rlen), selectNote)
-                '''
+                
                 if randExtraNote:
                     RSMidi.addNote(midiTake, int(channel), int(velocity), int(currentPos + rpos), int(self.rc.ChordDict[chord][randint(0, 2)]), int(self.rc.quartNoteLength * rlen), selectNote)
             else:
@@ -142,9 +159,16 @@ class MelodySection(RSStateManager):
         )
         '''
         self._label_6 = tkinter.Label(self.parent,
-            text = "Random",
+            text = "Random:",
         )
-
+        self._label_7 = tkinter.Label(self.parent,
+            text = "Harmony:",
+        )
+        
+        self._label_8 = tkinter.Label(self.parent,
+            text = "Melody type:",
+        )		
+        
         self.drawOrNot = self.newControlIntVar("draw", 1)
         self.cDrawOrNot = tkinter.Checkbutton(self.parent, variable=self.drawOrNot)
         self.highlight = self.newControlIntVar("highlight", 0)
@@ -152,9 +176,14 @@ class MelodySection(RSStateManager):
         self.channel = self.newControlIntVar("channel", 2)
         self.sChannel = tkinter.Scale(self.parent, from_=1, to=16, resolution=1, showvalue=0, orient="horizontal", variable=self.channel)
         self.scaleTxt1 = ttk.Label(self.parent, textvariable=self.channel)
+		
         self.velocity = self.newControlIntVar("velocity", 96)
         self.sVelocity = tkinter.Scale(self.parent, from_=1, to=127, resolution=1, showvalue=0, orient="horizontal", variable=self.velocity)
         self.scaleTxt2 = ttk.Label(self.parent, textvariable=self.velocity)
+		
+        self.harmony = self.newControlIntVar("harmony", 0)
+        self.cHarmony = tkinter.Checkbutton(self.parent, variable=self.harmony)
+	
         self.extraNoteProb = self.newControlIntVar("extranoteprob", 50)
         self.sExtraNoteProb = tkinter.Scale(self.parent, from_=0, to=100, resolution=1, showvalue=0, orient="horizontal", variable=self.extraNoteProb)
         self.scaleTxt3 = ttk.Label(self.parent, textvariable=self.extraNoteProb)
@@ -237,6 +266,32 @@ class MelodySection(RSStateManager):
             rowspan = 1,
             sticky = "w"
         )
+        self._label_7.grid(
+            in_    = self.parent,
+            column = 3,
+            row    = 6,
+            columnspan = 1,
+            ipadx = 10,
+            ipady = 5,
+            padx = 0,
+            pady = 0,
+            rowspan = 1,
+            sticky = "w"
+        )
+        
+        self._label_8.grid(
+            in_    = self.parent,
+            column = 1,
+            row    = 6,
+            columnspan = 1,
+            ipadx = 10,
+            ipady = 5,
+            padx = 0,
+            pady = 0,
+            rowspan = 1,
+            sticky = "w"
+        )
+        	
         self.scaleTxt1.grid(
             in_    = self.parent,
             column = 2,
@@ -273,6 +328,7 @@ class MelodySection(RSStateManager):
             rowspan = 1,
             sticky = "e"
         )
+
         self.cDrawOrNot.grid(
             in_    = self.parent,
             column = 2,
@@ -297,20 +353,8 @@ class MelodySection(RSStateManager):
             rowspan = 1,
             sticky = "w"
         )
-        self.sVelocity.grid(
-            in_    = self.parent,
-            column = 2,
-            row    = 4,
-            columnspan = 1,
-            ipadx = 0,
-            ipady = 0,
-            padx = 0,
-            pady = 0,
-            rowspan = 1,
-            sticky = "w"
-        )
 
-        '''
+        
         self.MelodyTypeSel.grid(
             in_    = self.parent,
             column = 2,
@@ -323,7 +367,19 @@ class MelodySection(RSStateManager):
             rowspan = 1,
             sticky = "w"
         )
-        '''
+        
+        self.sVelocity.grid(
+            in_    = self.parent,
+            column = 2,
+            row    = 4,
+            columnspan = 1,
+            ipadx = 0,
+            ipady = 0,
+            padx = 0,
+            pady = 0,
+            rowspan = 1,
+            sticky = "w"
+        )		
         self.sChannel.grid(
             in_    = self.parent,
             column = 2,
@@ -340,6 +396,18 @@ class MelodySection(RSStateManager):
             in_    = self.parent,
             column = 2,
             row    = 5,
+            columnspan = 1,
+            ipadx = 0,
+            ipady = 0,
+            padx = 0,
+            pady = 0,
+            rowspan = 1,
+            sticky = "w"
+        )
+        self.cHarmony.grid(
+            in_    = self.parent,
+            column = 4,
+            row    = 6,
             columnspan = 1,
             ipadx = 0,
             ipady = 0,

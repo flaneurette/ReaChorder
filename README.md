@@ -35,4 +35,4 @@ Then, in the MIDI editor, edit the menu (right click in menu) and add a new ReaS
 
 # Discussion
 
-Visit the Reaper form for discussion: https://forum.cockos.com/showthread.php?t=200185
+Visit the Reaper forum for discussion: https://forum.cockos.com/showthread.php?t=200185

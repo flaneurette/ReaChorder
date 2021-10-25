@@ -3,10 +3,10 @@ ReaChorder Python plugin for Reaper DAW
 
 About
 -----
-ReaChorder is a Python program that can generate a complete MIDI song structure in the Reaper DAW. It has a melody algorithm, creates drum lines, basslines and much more.
+ReaChorder is a Python program that can generate a unique complete MIDI song structure in the Reaper DAW. It has a chord progression and melody algorithms based upon the circle of fifths, basslines, drum computer and much more.
 
 # What does it do?
-A demo song (part) was created with a single click. Using Synth1 for all tracks:
+A demo song (part) was created with a single click, using the "Catchy" chord progression. Using Synth1 for all tracks:
 https://github.com/flaneurette/ReaChorder/blob/master/Binaries/RC-song.mp3?raw=true
 
 # What does it look like?

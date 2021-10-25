@@ -16,9 +16,9 @@ https://github.com/flaneurette/ReaChorder/blob/master/Binaries/RC-song.mp3?raw=t
 # Requirements:
 
 Minimum required software
-Reaper 4.5.2+: http://reaper.fm/
-Python 3.3: http://www.python.org/download/releases/3.3.0/
-SWS extension: http://www.standingwaterstudios.com/
+- Reaper 4.5.2+: http://reaper.fm/
+- Python: http://www.python.org/download/releases/3.3.0/
+- SWS extension: http://www.standingwaterstudios.com/
 
 # Installing
 1.  Make sure you have Python installed. To download, visit: https://www.python.org/downloads/

@@ -5,11 +5,12 @@ except ImportError:
     pass
 try:
     import sys
+    sys.path.append(RPR_GetResourcePath() + '/Scripts')
+    sys.path.append('/ReaChorder')
 except ImportError:
     RPR_ShowConsoleMsg('Could not import SYS.\n')
     pass
 try:
-    sys.path.append(RPR_GetResourcePath() + '/Scripts')
     from sws_python import *
 except ImportError:
     RPR_ShowConsoleMsg('Could not import SWS Python.\n')
@@ -20,8 +21,8 @@ try:
         RPR_ShowConsoleMsg('Your SWS version does not allow versioning. Please visit: https://www.sws-extension.org/ and update SWS.')
     else:		
         (sws_version,build) = CF_GetSWSVersion('',5)
-        if sws_version != '2.12':
-            RPR_ShowConsoleMsg('Your SWS version (< 2.12) is not supported. Please visit: https://www.sws-extension.org/ and update SWS.')
+        if sws_version < '2.12':
+            RPR_ShowConsoleMsg('Your SWS version ('+sws_version+') is not supported. Please visit: https://www.sws-extension.org/ and update SWS.')
 except:
     RPR_ShowConsoleMsg('Your SWS version is (probably) not supported. Please visit: https://www.sws-extension.org/ and update SWS.')
 try:
@@ -41,6 +42,7 @@ except ImportError:
     RPR_ShowConsoleMsg('Could not import tkinter.\n')
     pass
 try:
+    import rs_statemanager
     from rs_statemanager import RSStateManager
 except ImportError:
     RPR_ShowConsoleMsg('Could not import rs_statemanager.\n')

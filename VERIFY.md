@@ -15,6 +15,6 @@ gpg --keyserver https://flaneurette.com/.well-known/flaneurette.pub --recv-keys 
 git log --show-signature
 ```
 
-Note: GPG may show a trust warning - this is normal until you explicitly trust the key.</sub>
+Note: GPG may show a trust warning - this is normal until you explicitly trust the key.
 
-Security: Web interface commits may be less secure if GitHub was compromised at that moment.</sub>
+Security: Web interface commits may be less secure if GitHub was compromised at that moment.

@@ -20,4 +20,3 @@ Note: GPG may show a trust warning - this is normal until you explicitly trust t
 - To be certain use this permalink for webcommits: https://github.com/web-flow.gpg
 - VERIFY.md GPG key verification files have been added to all packages since 11 January 2026.
 - Last update: 2:08PM, GMT-1. 23/02/2026.
-

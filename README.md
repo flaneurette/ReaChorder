@@ -25,11 +25,6 @@ Minimum required software
 2.  Clone or download ReaChorder, and copy all files into your Reaper /Scripts/ folder
 3.  Add a new menu item in the midi editor and locate ReaChorder.py.
 
-# Installing with the binary installer
-1.  Make sure you have Python installed. To download, visit: https://www.python.org/downloads/
-2.  Run the installer
-3.  Add a new menu item in the midi editor and locate ReaChorder.py.
-
 # Adding to Reaper
 
 Adding Python to your Reaper, click use ReaScript. Locate the path and force Reaper to find the Python version.

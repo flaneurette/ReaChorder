@@ -142,6 +142,8 @@ class RC:
         [1, 6, 2, 5, 'Dreadful II' ],
         [2, 5, 1, 1, 'Doom'        ],
         [1, 2, 1, 5, 'Doom II'     ],
+        [1, 5, 3, 6, 'Elegy'        ], 
+        [6, 1, 4, 5, 'Elegy II'     ],
         [1, 6, 2, 4, 'Endless'     ],
         [1, 3, 4, 6, 'Energetic'   ],
         [1, 5, 1, 4, 'Folk'        ],
@@ -149,6 +151,8 @@ class RC:
         [6, 5, 4, 3, 'Flamenco'    ],
         [6, 5, 6, 5, 'Flamenco II' ],
         [1, 4, 3, 6, 'Grunge'      ],
+        [4, 1, 6, 1, 'Grief'        ],
+        [1, 3, 1, 4, 'Grief II'     ],
         [1, 7, 6, 7, 'Gothic'      ],
         [1, 6, 3, 7, 'Gothic II'   ],
         [1, 6, 5, 6, 'Gothic III'  ],
@@ -157,18 +161,21 @@ class RC:
         [2, 5, 1, 6, 'Jazz'        ],
         [1, 4, 5, 4, 'Love'        ],
         [1, 7, 1, 7, 'Litany'      ],
+        [6, 4, 1, 1, 'Longing'      ], 
+        [1, 4, 6, 6, 'Melancholy'   ],
+        [1, 2, 1, 1, 'Melancholy II'],
         [1, 4, 1, 5, 'Memories'    ],
         [1, 5, 6, 3, 'Nocturne'    ],
         [1, 5, 6, 4, 'Pop'         ],
         [1, 6, 3, 7, 'Pop II'      ],
         [4, 1, 4, 5, 'Rebellious'  ],
         [1, 3, 6, 7, 'Requiem'     ],
-        [1, 4, 5, 5, 'Sad'         ],
-        [1, 5, 4, 4, 'Sad II'      ],
-        [1, 4, 5, 4, 'Sad III'     ],
+        [1, 6, 4, 1, 'Sorrow'       ],
+        [1, 3, 4, 4, 'Sorrow II'    ],
         [5, 4, 1, 1, 'Sweet'       ],
         [1, 4, 1, 4, 'Simple'      ],
         [1, 5, 5, 1, 'Simple II'   ],
+        [1, 6, 4, 3, 'Weeping'      ],  
         [1, 4, 1, 4, 'Wild side'   ],
         [1, 1, 4, 6, 'Wistful'     ],
         [2, 1, 5, 7, 'Moody'       ],
@@ -178,7 +185,6 @@ class RC:
 		[1, 2, 3, 5, 'Fibonacci I '],
 		[3, 2, 5, 1, 'Fibonacci II']	
     ]
-
 
     KeyChartMajor = [
         [0, 9,23,13, 2, 4,18,32], #0 A

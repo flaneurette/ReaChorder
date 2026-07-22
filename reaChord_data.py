@@ -1,3 +1,5 @@
+# @noindex
+
 try:
     from reaper_python import *
 except ImportError:
@@ -123,10 +125,23 @@ class RC:
     pProgName = 4  #5th position
     progressions = [
         [6, 4, 1, 5, 'Alternative' ],           ### now we can add progressions to this too
-        [4, 4, 1, 5, 'Catchy'      ],
+        [1, 7, 6, 5, 'Andalusian'],
+        [1, 7, 6, 4, 'Andalusian II'],
+        [1, 6, 4, 7, 'Baroque Sequence'],
+        [4, 4, 1, 5, 'Catchy Pop'  ],
+        [1, 5, 1, 4, 'Chaconne'    ],
+        [1, 7, 1, 5, 'Chaconne II' ],
+        [1, 4, 5, 1, 'Classical Cadence'],
+        [1, 4, 7, 3, 'Classical Cadence II'],
+        [4, 5, 1, 1, 'Classical Cadence III'],
+        [7, 6, 5, 4, 'Descending'   ], 
+        [1, 5, 6, 3, 'Deceptive'],
+        [1, 4, 5, 6, 'Deceptive II'],
         [1, 1, 1, 1, 'Didgeridoo'  ],
         [1, 6, 4, 5, 'Dreadful'    ],
         [1, 6, 2, 5, 'Dreadful II' ],
+        [2, 5, 1, 1, 'Doom'        ],
+        [1, 2, 1, 5, 'Doom II'     ],
         [1, 6, 2, 4, 'Endless'     ],
         [1, 3, 4, 6, 'Energetic'   ],
         [1, 5, 1, 4, 'Folk'        ],
@@ -134,12 +149,20 @@ class RC:
         [6, 5, 4, 3, 'Flamenco'    ],
         [6, 5, 6, 5, 'Flamenco II' ],
         [1, 4, 3, 6, 'Grunge'      ],
+        [1, 7, 6, 7, 'Gothic'      ],
+        [1, 6, 3, 7, 'Gothic II'   ],
+        [1, 6, 5, 6, 'Gothic III'  ],
+        [1, 4, 7, 3, 'Gothic IV'   ],
+        [6, 7, 1, 5, 'Gothic V'    ],
         [2, 5, 1, 6, 'Jazz'        ],
         [1, 4, 5, 4, 'Love'        ],
+        [1, 7, 1, 7, 'Litany'      ],
         [1, 4, 1, 5, 'Memories'    ],
+        [1, 5, 6, 3, 'Nocturne'    ],
         [1, 5, 6, 4, 'Pop'         ],
         [1, 6, 3, 7, 'Pop II'      ],
         [4, 1, 4, 5, 'Rebellious'  ],
+        [1, 3, 6, 7, 'Requiem'     ],
         [1, 4, 5, 5, 'Sad'         ],
         [1, 5, 4, 4, 'Sad II'      ],
         [1, 4, 5, 4, 'Sad III'     ],
@@ -153,9 +176,9 @@ class RC:
         [2, 4, 7, 1, 'Primes II   '],
         [5, 2, 4, 1, 'Primes III  '],
 		[1, 2, 3, 5, 'Fibonacci I '],
-		[3, 2, 5, 1, 'Fibonacci II']
-		
+		[3, 2, 5, 1, 'Fibonacci II']	
     ]
+
 
     KeyChartMajor = [
         [0, 9,23,13, 2, 4,18,32], #0 A
